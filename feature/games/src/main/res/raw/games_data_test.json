@@ -1,0 +1,84 @@
+[
+  {
+    "skill": {
+      "id": 1,
+      "name": "Speed"
+    },
+    "games": [
+      {
+        "id": 1,
+        "name": "game1",
+        "description": "description1",
+        "skillId": 1
+      },
+      {
+        "id": 2,
+        "name": "game2",
+        "description": "description2",
+        "skillId": 1
+      }
+    ]
+  },
+  {
+    "skill": {
+      "id": 2,
+      "name": "Memory"
+    },
+    "games": [
+      {
+        "id": 3,
+        "name": "game3",
+        "description": "description3",
+        "skillId": 2
+      }
+    ]
+  },
+  {
+    "skill": {
+      "id": 3,
+      "name": "Attention"
+    },
+    "games": []
+  },
+  {
+    "skill": {
+      "id": 4,
+      "name": "Flexibility"
+    },
+    "games": [
+      {
+        "id": 4,
+        "name": "game4",
+        "description": "description4",
+        "skillId": 4
+      },
+      {
+        "id": 5,
+        "name": "game5",
+        "description": "description5",
+        "skillId": 4
+      }
+    ]
+  },
+  {
+    "skill": {
+      "id": 5,
+      "name": "Problem solving"
+    },
+    "games": [
+      {
+        "id": 6,
+        "name": "game6",
+        "description": "description6",
+        "skillId": 5
+      }
+    ]
+  },
+  {
+    "skill": {
+      "id": 6,
+      "name": "Math"
+    },
+    "games": []
+  }
+]
