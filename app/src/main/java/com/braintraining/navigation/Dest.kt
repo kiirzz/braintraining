@@ -5,5 +5,5 @@ object Dest {
     const val Games = "games"
     const val Stats = "stats"
     const val Setting = "setting"
-    const val GameDetailWithId = "game_detail/{gameId}"
+    const val GameDetailWithId = "game_detail/{gameId}/{skillId}"
 }

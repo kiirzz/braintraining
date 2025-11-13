@@ -69,7 +69,7 @@ fun GameScreenContent(
                     Box(
                         modifier = Modifier
                             .clickable {
-                                navController.navigate("game_detail/${g.id}")
+                                navController.navigate("game_detail/${g.id}/${item.skill.id}")
                             }
                     ) {
                         GameBox(g, item.skill)

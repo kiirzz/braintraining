@@ -16,13 +16,17 @@ import androidx.navigation.NavHostController
 @Composable
 fun GameDetailScreen(
     navController: NavHostController,
-    gameId: String?,
+    gameId: String,
+    skillId: String,
     gameViewModel: GameViewModel = hiltViewModel()
 ) {
     val game by gameViewModel.game.collectAsState()
+    val skill by gameViewModel.skill.collectAsState()
 
-    LaunchedEffect(gameId) {
-        gameId?.let { gameViewModel.getGame(it) }
+
+    LaunchedEffect(gameId, skillId) {
+        gameId.let { gameViewModel.getGame(it) }
+        skillId.let { gameViewModel.getSkill(it) }
     }
 
     Column {
@@ -35,9 +39,10 @@ fun GameDetailScreen(
             )
         }
 
-        if (game != null) {
+        if (game != null && skill != null) {
             Text(game!!.name)
             Text(game!!.description)
+            Text(skill!!.name)
         } else {
             Text("Loading...")
         }

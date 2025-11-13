@@ -6,11 +6,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import com.braintraining.core.model.Game
+import com.braintraining.core.model.Skill
 import com.braintraining.feature.games.GameDetailScreen
 import com.braintraining.feature.home.HomeScreen
 import com.braintraining.feature.games.GameScreen
+import kotlinx.serialization.json.Json
 
 @Composable
 fun NavGraph(
@@ -41,14 +46,26 @@ fun NavGraph(
             setShowBackButton(true)
             Text("Setting")
         }
-        composable(Dest.GameDetailWithId) {
-            val gameId = it.arguments?.getString("gameId")
+        composable(
+            Dest.GameDetailWithId,
+            arguments = listOf(
+                navArgument("gameId") { type = NavType.StringType },
+                navArgument("skillId") { type = NavType.StringType }
+            )
+        ) { backStackEntry ->
             setShowTopBar(false)
             setShowBottomBar(false)
-            GameDetailScreen(
-                navController = navController,
-                gameId = gameId
-            )
+
+            val gameId = backStackEntry.arguments?.getString("gameId")
+            val skillId = backStackEntry.arguments?.getString("skillId")
+
+            if (gameId != null && skillId != null) {
+                GameDetailScreen(
+                    navController = navController,
+                    gameId = gameId,
+                    skillId = skillId
+                )
+            }
         }
     }
 }

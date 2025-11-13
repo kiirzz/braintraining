@@ -65,6 +65,9 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
+    // JSON
+    implementation(libs.kotlinx.serialization.json)
+
     // Internal modules
     implementation(project(":feature:home"))
     implementation(project(":feature:games"))
