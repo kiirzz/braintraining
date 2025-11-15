@@ -10,18 +10,14 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.braintraining.core.model.Game
-import com.braintraining.core.model.Skill
 import com.braintraining.feature.games.GameDetailScreen
-import com.braintraining.feature.home.HomeScreen
 import com.braintraining.feature.games.GameScreen
-import kotlinx.serialization.json.Json
+import com.braintraining.feature.home.HomeScreen
 
 @Composable
 fun NavGraph(
     navController: NavHostController,
     paddingValues: PaddingValues,
-//    setShowBackButton: (Boolean) -> Unit,
     setShowTopBar: (Boolean) -> Unit,
     setShowBottomBar: (Boolean) -> Unit,
 ) {
@@ -31,25 +27,21 @@ fun NavGraph(
         modifier = Modifier.padding(paddingValues)
     ) {
         composable(Dest.Home) {
-//            setShowBackButton(false)
             setShowTopBar(true)
             setShowBottomBar(true)
             HomeScreen()
         }
         composable(Dest.Games) {
-//            setShowBackButton(false)
             setShowTopBar(true)
             setShowBottomBar(true)
             GameScreen(navController)
         }
         composable(Dest.Stats) {
-//            setShowBackButton(false)
             setShowTopBar(true)
             setShowBottomBar(true)
             Text("Stats")
         }
-        composable(Dest.Setting) {
-//            setShowBackButton(true)
+        composable(Dest.Account) {
             setShowTopBar(false)
             setShowBottomBar(false)
             Text("Setting")
