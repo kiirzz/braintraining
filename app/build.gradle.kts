@@ -72,6 +72,7 @@ dependencies {
     // Internal modules
     implementation(project(":feature:home"))
     implementation(project(":feature:games"))
+    implementation(project(":feature:account"))
 
     implementation(project(":core:data"))
     implementation(project(":core:model"))

@@ -10,6 +10,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.braintraining.feature.account.AccountScreen
 import com.braintraining.feature.games.GameDetailScreen
 import com.braintraining.feature.games.GameScreen
 import com.braintraining.feature.home.HomeScreen
@@ -44,7 +45,7 @@ fun NavGraph(
         composable(Dest.Account) {
             setShowTopBar(false)
             setShowBottomBar(false)
-            Text("Setting")
+            AccountScreen(navController)
         }
         composable(
             Dest.GameDetailWithId,

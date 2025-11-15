@@ -1,9 +1,14 @@
 package com.braintraining.navigation
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBackIosNew
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material3.*
+import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 
@@ -16,13 +21,12 @@ fun TopNavbar(
 ) {
     if (showTopBar) {
         TopAppBar(
-            title = {  },
+            title = { },
             colors = TopAppBarDefaults.topAppBarColors(
                 containerColor = MaterialTheme.colorScheme.background,
                 navigationIconContentColor = MaterialTheme.colorScheme.onBackground,
                 actionIconContentColor = MaterialTheme.colorScheme.onBackground
-            )
-            ,
+            ),
 //            navigationIcon = {
 //                if (showBackButton) {
 //                    IconButton(onClick = { navController.popBackStack() }) {
@@ -36,7 +40,7 @@ fun TopNavbar(
             actions = {
                 IconButton(
                     onClick = {
-                        navController.navigate(Dest.Setting) {
+                        navController.navigate(Dest.Account) {
                             launchSingleTop = true
                         }
                     },
@@ -45,8 +49,8 @@ fun TopNavbar(
                     )
                 ) {
                     Icon(
-                        imageVector = Icons.Filled.Settings,
-                        contentDescription = "Setting"
+                        imageVector = Icons.Filled.AccountBox,
+                        contentDescription = "Account"
                     )
                 }
             }
