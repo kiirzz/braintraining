@@ -59,6 +59,7 @@ dependencies {
 
     // Hilt (DI)
     implementation(libs.hilt)
+    implementation(libs.androidx.compose.runtime)
     ksp(libs.hilt.compiler)
 
     // Coroutines

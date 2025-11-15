@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
-    val showBackButtonState = remember { mutableStateOf(false) }
+//    val showBackButtonState = remember { mutableStateOf(false) }
     val showTopBarState = remember { mutableStateOf(true) }
     val showBottomBarState = remember { mutableStateOf(true) }
 
@@ -43,7 +43,7 @@ fun MainScreen() {
         topBar = {
             TopNavbar(
                 navController = navController,
-                showBackButton = showBackButtonState.value,
+//                showBackButton = showBackButtonState.value,
                 showTopBar = showTopBarState.value
             )
         },
@@ -59,7 +59,7 @@ fun MainScreen() {
             NavGraph(
                 navController = navController,
                 paddingValues = innerPadding,
-                setShowBackButton = { showBackButtonState.value = it },
+//                setShowBackButton = { showBackButtonState.value = it },
                 setShowTopBar = { showTopBarState.value = it },
                 setShowBottomBar = { showBottomBarState.value = it}
             )

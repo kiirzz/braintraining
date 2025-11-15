@@ -21,7 +21,7 @@ import kotlinx.serialization.json.Json
 fun NavGraph(
     navController: NavHostController,
     paddingValues: PaddingValues,
-    setShowBackButton: (Boolean) -> Unit,
+//    setShowBackButton: (Boolean) -> Unit,
     setShowTopBar: (Boolean) -> Unit,
     setShowBottomBar: (Boolean) -> Unit,
 ) {
@@ -31,19 +31,27 @@ fun NavGraph(
         modifier = Modifier.padding(paddingValues)
     ) {
         composable(Dest.Home) {
-            setShowBackButton(false)
+//            setShowBackButton(false)
+            setShowTopBar(true)
+            setShowBottomBar(true)
             HomeScreen()
         }
         composable(Dest.Games) {
-            setShowBackButton(false)
+//            setShowBackButton(false)
+            setShowTopBar(true)
+            setShowBottomBar(true)
             GameScreen(navController)
         }
         composable(Dest.Stats) {
-            setShowBackButton(false)
+//            setShowBackButton(false)
+            setShowTopBar(true)
+            setShowBottomBar(true)
             Text("Stats")
         }
         composable(Dest.Setting) {
-            setShowBackButton(true)
+//            setShowBackButton(true)
+            setShowTopBar(false)
+            setShowBottomBar(false)
             Text("Setting")
         }
         composable(

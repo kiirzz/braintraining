@@ -84,7 +84,10 @@ fun GameScreenContent(
 fun GameBox(game: Game, skill: Skill) {
     Box(
         modifier = Modifier
-            .background(Color.White, shape = RoundedCornerShape(8.dp)),
+            .background(
+                MaterialTheme.colorScheme.surface,
+                shape = RoundedCornerShape(12.dp)
+            ),
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -94,7 +97,10 @@ fun GameBox(game: Game, skill: Skill) {
             Box(
                 modifier = Modifier
                     .size(width = 160.dp, height = 100.dp)
-                    .background(Color.Gray.copy(alpha = 0.3f))
+                    .background(
+                        MaterialTheme.colorScheme.tertiary,
+                        shape = RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp)
+                    )
             )
             Text(
                 text = game.name,

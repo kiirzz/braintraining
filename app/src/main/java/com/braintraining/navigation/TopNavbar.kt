@@ -11,28 +11,39 @@ import androidx.navigation.NavHostController
 @Composable
 fun TopNavbar(
     navController: NavHostController,
-    showBackButton: Boolean = false,
+//    showBackButton: Boolean = false,
     showTopBar: Boolean = true
 ) {
     if (showTopBar) {
         TopAppBar(
             title = {  },
-            navigationIcon = {
-                if (showBackButton) {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(
-                            imageVector = Icons.Filled.ArrowBackIosNew,
-                            contentDescription = "Back"
-                        )
-                    }
-                } else null
-            },
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.background,
+                navigationIconContentColor = MaterialTheme.colorScheme.onBackground,
+                actionIconContentColor = MaterialTheme.colorScheme.onBackground
+            )
+            ,
+//            navigationIcon = {
+//                if (showBackButton) {
+//                    IconButton(onClick = { navController.popBackStack() }) {
+//                        Icon(
+//                            imageVector = Icons.Filled.ArrowBackIosNew,
+//                            contentDescription = "Back"
+//                        )
+//                    }
+//                } else null
+//            },
             actions = {
-                IconButton(onClick = {
-                    navController.navigate(Dest.Setting) {
-                        launchSingleTop = true
-                    }
-                }) {
+                IconButton(
+                    onClick = {
+                        navController.navigate(Dest.Setting) {
+                            launchSingleTop = true
+                        }
+                    },
+                    colors = IconButtonDefaults.iconButtonColors(
+                        contentColor = MaterialTheme.colorScheme.onBackground
+                    )
+                ) {
                     Icon(
                         imageVector = Icons.Filled.Settings,
                         contentDescription = "Setting"
