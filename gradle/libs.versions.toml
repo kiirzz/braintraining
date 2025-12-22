@@ -6,6 +6,8 @@ composeBom = "2025.08.01"
 coreKtx = "1.17.0"
 coroutines = "1.9.0"
 espressoCore = "3.7.0"
+firebaseBom = "33.7.0"
+gmsPlugin = "4.4.2"
 hilt = "2.56"
 hiltNavigationCompose = "1.2.0"
 junit = "4.13.2"
@@ -54,6 +56,9 @@ androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref =
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "ui" }
+firebase-auth-ktx = { module = "com.google.firebase:firebase-auth-ktx" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-firestore-ktx = { module = "com.google.firebase:firebase-firestore-ktx" }
 hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -75,6 +80,7 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 braintraining-android-application = { id = "braintraining.android.application" }
 braintraining-android-room = { id = "braintraining.android.room" }
 braintraining-hilt = { id = "braintraining.hilt" }
+gms = { id = "com.google.gms.google-services", version.ref = "gmsPlugin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
     alias(libs.plugins.spotless)
+    alias(libs.plugins.gms)
 }
 
 android {
@@ -77,6 +78,7 @@ dependencies {
     implementation(project(":core:data"))
     implementation(project(":core:model"))
     implementation(project(":core:systemdesign"))
+    implementation(project(":core:firebase"))
 
     // Testing
     testImplementation(libs.junit)
