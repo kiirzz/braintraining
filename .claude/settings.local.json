@@ -3,7 +3,10 @@
     "allow": [
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:api.github.com)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(Get-ChildItem -Path \"e:\\\\Workspaces\\\\braintraining\" -Force)",
+      "Bash(Select-Object Name, PSIsContainer, Length, LastWriteTime)",
+      "Bash(Format-Table -AutoSize)"
     ]
   }
 }
