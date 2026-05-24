@@ -69,10 +69,10 @@ Each game is its own module under `game/`:
 | `game:compute_challenge` | Raindrops | Flexibility / Math |
 | `game:memory_matrix` | Memory Matrix | Memory |
 | `game:speed_match` | Speed Match | Speed |
-| `game:train_of_thought` | Train of Thought | Attention |
-| `game:word_bubbles` | Word Bubbles | Language |
+| `game:homeward` | Homeward (original) | Problem Solving |
+| `game:matrix_deduction` | Matrix Deduction (original) | Problem Solving |
 | `game:color_match` | Color Match | Flexibility |
-| `game:pattern_recall` | Scape Plan | Memory |
+<!-- | `game:pattern_recall` | Scape Plan | Memory | -->
 | `game:lost_in_migration` | Lost in Migration | Attention |
 | `game:eagle_eye` | Eagle Eye | Attention |
 | `game:familiar_faces` | Familiar Faces | Memory |
@@ -210,12 +210,54 @@ Session selection logic:
 
 ---
 
+## Storage Decision Guide: Room vs Firebase
+
+Use this table to decide where each feature's data lives. The rule of thumb: **if the feature works without internet, it belongs in Room; if it requires comparing or sharing data across users, it belongs in Firestore.**
+
+### Room (SQLite) — offline-first, local source of truth
+
+| Feature | Why Room |
+|---|---|
+| Game sessions & scores | Played fully offline; scores recorded immediately regardless of connectivity |
+| BPI / PerformanceSnapshot | Derived from local game results; chart must load instantly without a network call |
+| Daily training session queue | Computed locally from Room data; must work on a plane |
+| Streak tracking | Requires today's date + local history only |
+| User preferences (theme, reminders, daily goal) | Local settings via Proto DataStore (not even Room — DataStore is simpler here) |
+| Game catalog (`Game`, `Skill` metadata) | Seeded at install; updated rarely; must be available offline |
+
+### Firestore — requires internet, cross-user or cross-device data
+
+| Feature | Why Firestore |
+|---|---|
+| Cloud backup of game results | Persist data across reinstalls and devices; synced from Room via WorkManager |
+| Global leaderboard / ELO ranking | Comparing a user's score against all other players requires a shared server-side dataset; cannot be local |
+| Friend challenges / social features | Real-time multiplayer or async challenges need a shared state between two accounts |
+| Anonymous → Google account linking | Auth state is server-side; managed by Firebase Auth |
+| Remote config (e.g. featured games, promo banners) | Content curated server-side and pushed to all clients |
+
+### Sync strategy
+
+1. Gameplay writes to **Room first** — UI is always reactive to Room Flows.
+2. A `WorkManager` job syncs Room → Firestore in the background with exponential backoff.
+3. On app start, fetch the user's latest Firestore snapshot and upsert into Room (handles new-device restore).
+4. **Ranking / leaderboard reads come directly from Firestore** — they are never cached in Room because the data changes globally in real time and per-user staleness is acceptable.
+
+### Future: ELO / Global Ranking
+
+When the ranking feature is added:
+- After a game session, `RecordGameResultUseCase` saves the result to Room and enqueues a WorkManager task.
+- The WorkManager task pushes the result to Firestore and calls a Cloud Function that recomputes the user's ELO and updates the global leaderboard collection.
+- `feature:leaderboard` reads the Firestore leaderboard collection directly (no Room cache) and shows a loading/error state when offline.
+- The user's own ELO rank is stored in Firestore under their user document and optionally cached in Room as a `UserStats` entity for offline display.
+
+---
+
 ## Firebase Integration (core:firebase)
 
 | Service | Usage |
 |---|---|
 | Firebase Auth | Anonymous auth on first launch; link to Google account optionally |
-| Firestore | Remote backup of `GameResult` and `UserPreferences` |
+| Firestore | Remote backup of `GameResult`; global leaderboard collection (future) |
 | Firebase Analytics | Screen views + game completion events via `AnalyticsHelper` |
 
 Auth strategy: always create an anonymous user on first launch so data is persisted to the cloud immediately. Let the user optionally sign in with Google to link their account.

@@ -6,7 +6,12 @@
       "WebFetch(domain:github.com)",
       "Bash(Get-ChildItem -Path \"e:\\\\Workspaces\\\\braintraining\" -Force)",
       "Bash(Select-Object Name, PSIsContainer, Length, LastWriteTime)",
-      "Bash(Format-Table -AutoSize)"
+      "Bash(Format-Table -AutoSize)",
+      "Bash(Get-ChildItem -Path \"e:\\\\Workspaces\\\\braintraining\" -Directory)",
+      "Bash(Select-Object Name)",
+      "PowerShell(ls -Path \"e:\\\\Workspaces\\\\braintraining\" | Where-Object { $_.PSIsContainer })",
+      "PowerShell(ls -Path \"e:\\\\Workspaces\\\\braintraining\\\\game\" | Where-Object { $_.PSIsContainer })",
+      "Bash(python3 -c ' *)"
     ]
   }
 }
