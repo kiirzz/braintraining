@@ -32,8 +32,8 @@ interface RecordDao {
     @Query("SELECT * FROM records WHERE game_id = :gameId ORDER BY played_at DESC")
     fun getGameRecords(gameId: String): Flow<List<RecordEntity>>
 
-    @Query("SELECT * FROM records WHERE user_id = :userId AND skill_area = :skillArea ORDER BY played_at DESC")
-    fun getUserRecordsBySkillArea(userId: String, skillArea: String): Flow<List<RecordEntity>>
+    @Query("SELECT * FROM records WHERE user_id = :userId AND skill_id = :skillId ORDER BY played_at DESC")
+    fun getUserRecordsBySkill(userId: String, skillId: String): Flow<List<RecordEntity>>
 
     @Query("SELECT * FROM records ORDER BY played_at DESC")
     fun getAllRecords(): Flow<List<RecordEntity>>
