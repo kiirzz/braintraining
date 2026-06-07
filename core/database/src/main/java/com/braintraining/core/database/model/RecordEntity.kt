@@ -5,7 +5,6 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.braintraining.core.model.Record
-import com.braintraining.core.model.SkillArea
 import java.time.Instant
 
 @Entity(
@@ -21,6 +20,12 @@ import java.time.Instant
             entity = GameEntity::class,
             parentColumns = ["id"],
             childColumns = ["game_id"],
+            onDelete = ForeignKey.CASCADE,
+        ),
+        ForeignKey(
+            entity = SkillEntity::class,
+            parentColumns = ["id"],
+            childColumns = ["skill_id"],
             onDelete = ForeignKey.CASCADE,
         )
     ]
@@ -39,8 +44,8 @@ data class RecordEntity(
     val userId: String,
     @ColumnInfo(name = "game_id")
     val gameId: String,
-    @ColumnInfo(name = "skill_area")
-    val skillArea: String,
+    @ColumnInfo(name = "skill_id")
+    val skillId: String,
 )
 
 fun RecordEntity.asExternalModel() = Record(
@@ -50,7 +55,7 @@ fun RecordEntity.asExternalModel() = Record(
     playedAt = Instant.ofEpochMilli(playedAt),
     userId = userId,
     gameId = gameId,
-    skillArea = SkillArea.valueOf(skillArea),
+    skillId = skillId,
 )
 
 fun Record.asEntity() = RecordEntity(
@@ -60,5 +65,5 @@ fun Record.asEntity() = RecordEntity(
     playedAt = playedAt.toEpochMilli(),
     userId = userId,
     gameId = gameId,
-    skillArea = skillArea.name,
+    skillId = skillId,
 )

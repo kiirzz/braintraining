@@ -4,7 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.braintraining.core.model.Skill
-import com.braintraining.core.model.SkillWithGame
 
 @Entity(
     tableName = "skills",

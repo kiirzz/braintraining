@@ -9,5 +9,5 @@ data class Record(
     val playedAt: Instant,
     val userId: String,
     val gameId: String,
-    val skillArea: SkillArea,
+    val skillId: String,
 )
