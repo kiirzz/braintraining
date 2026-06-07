@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import com.braintraining.core.model.GameRecord
+import com.braintraining.core.model.Record
 import com.braintraining.core.model.SkillArea
 import java.time.Instant
 
@@ -43,7 +43,7 @@ data class RecordEntity(
     val skillArea: String,
 )
 
-fun RecordEntity.asExternalModel() = GameRecord(
+fun RecordEntity.asExternalModel() = Record(
     recordId = recordId,
     score = score,
     durationMs = durationMs,
@@ -53,7 +53,7 @@ fun RecordEntity.asExternalModel() = GameRecord(
     skillArea = SkillArea.valueOf(skillArea),
 )
 
-fun GameRecord.asEntity() = RecordEntity(
+fun Record.asEntity() = RecordEntity(
     recordId = recordId,
     score = score,
     durationMs = durationMs,
