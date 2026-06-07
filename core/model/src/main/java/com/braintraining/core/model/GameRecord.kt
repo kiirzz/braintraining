@@ -1,12 +1,13 @@
 package com.braintraining.core.model
 
-import java.time.LocalDate
+import java.time.Instant
 
 data class GameRecord(
     val recordId: String,
-    val playTime: Int,
     val score: Int,
-    val datePlayed: LocalDate,
+    val durationMs: Long,
+    val playedAt: Instant,
     val userId: String,
     val gameId: String,
+    val skillArea: SkillArea,
 )

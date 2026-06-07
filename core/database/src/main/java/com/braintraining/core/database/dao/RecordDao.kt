@@ -26,15 +26,25 @@ interface RecordDao {
     @Query("SELECT * FROM records WHERE record_id = :recordId")
     fun getRecord(recordId: String): Flow<RecordEntity?>
 
-    @Query("SELECT * FROM records WHERE user_id = :userId")
+    @Query("SELECT * FROM records WHERE user_id = :userId ORDER BY played_at DESC")
     fun getUserRecords(userId: String): Flow<List<RecordEntity>>
 
-    @Query("SELECT * FROM records WHERE game_id = :gameId")
+    @Query("SELECT * FROM records WHERE game_id = :gameId ORDER BY played_at DESC")
     fun getGameRecords(gameId: String): Flow<List<RecordEntity>>
 
-    @Query("SELECT * FROM records")
+    @Query("SELECT * FROM records WHERE user_id = :userId AND skill_area = :skillArea ORDER BY played_at DESC")
+    fun getUserRecordsBySkillArea(userId: String, skillArea: String): Flow<List<RecordEntity>>
+
+    @Query("SELECT * FROM records ORDER BY played_at DESC")
     fun getAllRecords(): Flow<List<RecordEntity>>
+
+    @Query("SELECT * FROM records WHERE user_id = :userId ORDER BY played_at DESC LIMIT :limit")
+    fun getUserRecentRecords(userId: String, limit: Int): Flow<List<RecordEntity>>
 
     @Query("DELETE FROM records WHERE record_id = :recordId")
     suspend fun deleteRecordById(recordId: String)
+
+    @Query("DELETE FROM records WHERE user_id = :userId")
+    suspend fun deleteUserRecords(userId: String)
 }
+

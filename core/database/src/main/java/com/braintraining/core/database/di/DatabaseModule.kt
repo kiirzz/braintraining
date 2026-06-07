@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.braintraining.core.database.BraintrainingDatabase
+import com.braintraining.core.database.DatabaseMigrations
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,6 +27,7 @@ internal object DatabaseModule {
         BraintrainingDatabase::class.java,
         "braintraining-database",
     )
+        .addMigrations(DatabaseMigrations.MIGRATION_1_2)
         .addCallback(object : RoomDatabase.Callback() {
             override fun onCreate(db: SupportSQLiteDatabase) {
                 super.onCreate(db)

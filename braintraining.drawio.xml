@@ -69,7 +69,7 @@
           <mxGeometry height="26" width="140" y="156" as="geometry" />
         </mxCell>
         <mxCell id="bdbe_q7erUs7iZ87WkTO-21" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="user_stats" vertex="1">
-          <mxGeometry height="182" width="140" x="270" y="580" as="geometry" />
+          <mxGeometry height="208" width="140" x="270" y="580" as="geometry" />
         </mxCell>
         <mxCell id="bdbe_q7erUs7iZ87WkTO-22" parent="bdbe_q7erUs7iZ87WkTO-21" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="user: users" vertex="1">
           <mxGeometry height="26" width="140" y="26" as="geometry" />
@@ -88,6 +88,9 @@
         </mxCell>
         <mxCell id="bdbe_q7erUs7iZ87WkTO-28" parent="bdbe_q7erUs7iZ87WkTO-21" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="overall_elo: int" vertex="1">
           <mxGeometry height="26" width="140" y="156" as="geometry" />
+        </mxCell>
+        <mxCell id="bdbe_q7erUs7iZ87WkTO-44" parent="bdbe_q7erUs7iZ87WkTO-21" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="global_rank: int" vertex="1">
+          <mxGeometry height="26" width="140" y="182" as="geometry" />
         </mxCell>
         <mxCell id="bdbe_q7erUs7iZ87WkTO-29" edge="1" parent="1" source="bdbe_q7erUs7iZ87WkTO-9" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;rounded=0;exitX=1.014;exitY=0.269;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="bdbe_q7erUs7iZ87WkTO-13" value="">
           <mxGeometry relative="1" width="160" as="geometry">

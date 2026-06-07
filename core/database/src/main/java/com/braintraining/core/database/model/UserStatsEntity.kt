@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.braintraining.core.model.UserStats
+import java.time.LocalDate
 
 @Entity(
     tableName = "user_stats",
@@ -23,8 +24,10 @@ data class UserStatsEntity(
     val userId: String,
     @ColumnInfo(name = "current_streak")
     val currentStreak: Int,
-    @ColumnInfo(name = "best_streak")
-    val bestStreak: Int,
+    @ColumnInfo(name = "longest_streak")
+    val longestStreak: Int,
+    @ColumnInfo(name = "last_played_date")
+    val lastPlayedDate: LocalDate?,
     @ColumnInfo(name = "first_elo")
     val firstElo: Int,
     @ColumnInfo(name = "best_elo")
@@ -36,7 +39,8 @@ data class UserStatsEntity(
 fun UserStatsEntity.asExternalModel() = UserStats(
     userId = userId,
     currentStreak = currentStreak,
-    bestStreak = bestStreak,
+    longestStreak = longestStreak,
+    lastPlayedDate = lastPlayedDate,
     firstElo = firstElo,
     bestElo = bestElo,
     overallElo = overallElo,
@@ -45,7 +49,8 @@ fun UserStatsEntity.asExternalModel() = UserStats(
 fun UserStats.asEntity() = UserStatsEntity(
     userId = userId,
     currentStreak = currentStreak,
-    bestStreak = bestStreak,
+    longestStreak = longestStreak,
+    lastPlayedDate = lastPlayedDate,
     firstElo = firstElo,
     bestElo = bestElo,
     overallElo = overallElo,

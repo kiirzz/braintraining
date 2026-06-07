@@ -23,9 +23,19 @@ interface UserStatsDao {
     @Query("SELECT * FROM user_stats WHERE user_id = :userId")
     fun getUserStats(userId: String): Flow<UserStatsEntity?>
 
+    @Query("SELECT * FROM user_stats ORDER BY overall_elo DESC")
+    fun getUsersRanked(): Flow<List<UserStatsEntity>>
+
+    @Query("SELECT * FROM user_stats WHERE current_streak > 0 ORDER BY current_streak DESC")
+    fun getActiveStreaks(): Flow<List<UserStatsEntity>>
+
+    @Query("SELECT * FROM user_stats ORDER BY best_elo DESC")
+    fun getUsersByBestElo(): Flow<List<UserStatsEntity>>
+
     @Query("SELECT * FROM user_stats")
     fun getAllUserStats(): Flow<List<UserStatsEntity>>
 
     @Query("DELETE FROM user_stats WHERE user_id = :userId")
     suspend fun deleteUserStatsByUserId(userId: String)
 }
+

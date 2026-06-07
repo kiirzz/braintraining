@@ -24,6 +24,12 @@
             <option value="$PROJECT_DIR$/feature/home" />
             <option value="$PROJECT_DIR$/game" />
             <option value="$PROJECT_DIR$/game/compute_challenge" />
+            <option value="$PROJECT_DIR$/game/eagle_eye" />
+            <option value="$PROJECT_DIR$/game/homeward" />
+            <option value="$PROJECT_DIR$/game/lost_in_migration" />
+            <option value="$PROJECT_DIR$/game/matrix_deduction" />
+            <option value="$PROJECT_DIR$/game/memory_matrix" />
+            <option value="$PROJECT_DIR$/game/speed_match" />
           </set>
         </option>
       </GradleProjectSettings>

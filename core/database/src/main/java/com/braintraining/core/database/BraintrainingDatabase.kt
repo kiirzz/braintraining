@@ -9,10 +9,15 @@ import com.braintraining.core.database.dao.RecordDao
 import com.braintraining.core.database.dao.SkillDao
 import com.braintraining.core.database.dao.UserDao
 import com.braintraining.core.database.dao.UserStatsDao
+import com.braintraining.core.database.model.DailyStreakEntity
 import com.braintraining.core.database.model.EloEntity
 import com.braintraining.core.database.model.GameEntity
+import com.braintraining.core.database.model.GameResultEntity
+import com.braintraining.core.database.model.PerformanceSnapshotEntity
 import com.braintraining.core.database.model.RecordEntity
 import com.braintraining.core.database.model.SkillEntity
+import com.braintraining.core.database.model.TrainingSessionEntity
+import com.braintraining.core.database.model.TrainingSessionGameEntity
 import com.braintraining.core.database.model.UserEntity
 import com.braintraining.core.database.model.UserStatsEntity
 
@@ -24,8 +29,13 @@ import com.braintraining.core.database.model.UserStatsEntity
         RecordEntity::class,
         UserStatsEntity::class,
         EloEntity::class,
+        GameResultEntity::class,
+        PerformanceSnapshotEntity::class,
+        TrainingSessionEntity::class,
+        TrainingSessionGameEntity::class,
+        DailyStreakEntity::class,
     ],
-    version = 1,
+    version = 2,
     autoMigrations = [],
     exportSchema = true,
 )
