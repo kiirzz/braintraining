@@ -10,4 +10,5 @@ data class UserStats(
     val firstElo: Int,
     val bestElo: Int,
     val overallElo: Int,
+    val globalRank: Int?,
 )

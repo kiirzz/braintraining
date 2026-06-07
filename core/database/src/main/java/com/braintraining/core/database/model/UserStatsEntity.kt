@@ -34,6 +34,8 @@ data class UserStatsEntity(
     val bestElo: Int,
     @ColumnInfo(name = "overall_elo")
     val overallElo: Int,
+    @ColumnInfo(name = "global_rank")
+    val globalRank: Int?,
 )
 
 fun UserStatsEntity.asExternalModel() = UserStats(
@@ -44,6 +46,7 @@ fun UserStatsEntity.asExternalModel() = UserStats(
     firstElo = firstElo,
     bestElo = bestElo,
     overallElo = overallElo,
+    globalRank = globalRank,
 )
 
 fun UserStats.asEntity() = UserStatsEntity(
@@ -54,4 +57,5 @@ fun UserStats.asEntity() = UserStatsEntity(
     firstElo = firstElo,
     bestElo = bestElo,
     overallElo = overallElo,
+    globalRank = globalRank,
 )
