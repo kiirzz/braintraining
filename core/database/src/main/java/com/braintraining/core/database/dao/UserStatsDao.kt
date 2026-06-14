@@ -29,8 +29,8 @@ interface UserStatsDao {
     @Query("SELECT * FROM user_stats WHERE current_streak > 0 ORDER BY current_streak DESC")
     fun getActiveStreaks(): Flow<List<UserStatsEntity>>
 
-    @Query("SELECT * FROM user_stats ORDER BY best_elo DESC")
-    fun getUsersByBestElo(): Flow<List<UserStatsEntity>>
+    @Query("SELECT * FROM user_stats ORDER BY best_rating DESC")
+    fun getUsersByBestRating(): Flow<List<UserStatsEntity>>
 
     @Query("SELECT * FROM user_stats")
     fun getAllUserStats(): Flow<List<UserStatsEntity>>

@@ -1,0 +1,40 @@
+@startuml login
+
+title Sequence: Login
+
+participant "caller" as caller
+participant ":users" as users
+participant "TokenProvider" as tokenProvider
+participant ":tokens" as tokens
+
+caller -> users : login(username, password)
+activate users
+
+users -> users : validateCredentials(username, password)
+activate users
+users --> users : userId
+deactivate users
+
+opt [userId]
+
+  users -> tokenProvider : generateRefreshToken(userId)
+  activate tokenProvider
+  tokenProvider --> users : refreshToken
+  deactivate tokenProvider
+
+  users -> tokenProvider : generateAccessToken(userId)
+  activate tokenProvider
+  tokenProvider --> users : accessToken
+  deactivate tokenProvider
+
+  users -> tokens : <<create>>(refreshToken)
+  activate tokens
+  tokens --> users : void
+  deactivate tokens
+
+end
+
+users --> caller : accessToken, refreshToken
+deactivate users
+
+@enduml

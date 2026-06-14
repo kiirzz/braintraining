@@ -4,11 +4,11 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import com.braintraining.core.model.Elo
+import com.braintraining.core.model.Rating
 import java.time.Instant
 
 @Entity(
-    tableName = "elo",
+    tableName = "rating",
     foreignKeys = [
         ForeignKey(
             entity = UserEntity::class,
@@ -24,32 +24,32 @@ import java.time.Instant
         )
     ]
 )
-data class EloEntity(
+data class RatingEntity(
     @PrimaryKey
-    @ColumnInfo(name = "elo_id")
-    val eloId: String,
+    @ColumnInfo(name = "rating_id")
+    val ratingId: String,
     @ColumnInfo(name = "user_id")
     val userId: String,
     @ColumnInfo(name = "skill_id")
     val skillId: String,
-    @ColumnInfo(name = "current_elo")
-    val currentElo: Int,
+    @ColumnInfo(name = "current_rating")
+    val currentRating: Int,
     @ColumnInfo(name = "created_at")
     val createdAt: Long,
 )
 
-fun EloEntity.asExternalModel() = Elo(
-    eloId = eloId,
+fun RatingEntity.asExternalModel() = Rating(
+    ratingId = ratingId,
     userId = userId,
     skillId = skillId,
-    currentElo = currentElo,
+    currentRating = currentRating,
     createdAt = Instant.ofEpochMilli(createdAt),
 )
 
-fun Elo.asEntity() = EloEntity(
-    eloId = eloId,
+fun Rating.asEntity() = RatingEntity(
+    ratingId = ratingId,
     userId = userId,
     skillId = skillId,
-    currentElo = currentElo,
+    currentRating = currentRating,
     createdAt = createdAt.toEpochMilli(),
 )

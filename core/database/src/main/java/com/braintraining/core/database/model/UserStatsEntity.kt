@@ -28,12 +28,12 @@ data class UserStatsEntity(
     val longestStreak: Int,
     @ColumnInfo(name = "last_played_date")
     val lastPlayedDate: LocalDate?,
-    @ColumnInfo(name = "first_elo")
-    val firstElo: Int,
-    @ColumnInfo(name = "best_elo")
-    val bestElo: Int,
-    @ColumnInfo(name = "overall_elo")
-    val overallElo: Int,
+    @ColumnInfo(name = "first_rating")
+    val firstRating: Int,
+    @ColumnInfo(name = "best_rating")
+    val bestRating: Int,
+    @ColumnInfo(name = "overall_rating")
+    val overallRating: Int,
     @ColumnInfo(name = "global_rank")
     val globalRank: Int?,
 )
@@ -43,9 +43,9 @@ fun UserStatsEntity.asExternalModel() = UserStats(
     currentStreak = currentStreak,
     longestStreak = longestStreak,
     lastPlayedDate = lastPlayedDate,
-    firstElo = firstElo,
-    bestElo = bestElo,
-    overallElo = overallElo,
+    firstRating = firstRating,
+    bestRating = bestRating,
+    overallRating = overallRating,
     globalRank = globalRank,
 )
 
@@ -54,8 +54,8 @@ fun UserStats.asEntity() = UserStatsEntity(
     currentStreak = currentStreak,
     longestStreak = longestStreak,
     lastPlayedDate = lastPlayedDate,
-    firstElo = firstElo,
-    bestElo = bestElo,
-    overallElo = overallElo,
+    firstRating = firstRating,
+    bestRating = bestRating,
+    overallRating = overallRating,
     globalRank = globalRank,
 )

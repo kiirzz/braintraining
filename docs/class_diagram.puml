@@ -1,0 +1,90 @@
+@startuml braintraining
+
+title Brain Training - Entity Diagram
+
+entity users {
+  userId: string
+  username: string
+  password: string
+  date_of_birth: date
+  role: string
+  --
+  login(username, password): accessToken, refreshToken
+  validateCredentials(username, password): userId
+}
+
+entity skills {
+  skillId: string
+  name: string
+}
+
+entity games {
+  gameId: string
+  name: string
+  description: text
+  skill: skills
+}
+
+entity records {
+  recordId: string
+  durationMs: long
+  score: int
+  playedAt: timestamp
+  skillArea: enum
+  user: users
+  game: games
+  --
+  createRecord(record): void
+}
+
+entity user_stats {
+  user: users
+  current_streak: int
+  longest_streak: int
+  last_played_date: date?
+  first_rating: int
+  best_rating: int
+  overall_rating: int
+  global_rank: int?
+  --
+  updateStats(current_rating): void
+  updateBestRating(rating): void
+  updateOverallRating(rating): void
+  calculateGlobalRank(rating): void
+}
+
+entity rating {
+  ratingId: string
+  userId: string
+  skillId: string
+  current_rating: int
+  created_at: timestamp
+  --
+  updateCurrentRating(record): void
+  calculateRating(record): current_rating
+}
+
+entity tokens {
+  user: users
+  refresh_token: string
+  refresh_expires_at: timestamp
+  --
+  <<create>>(refreshToken): void
+}
+
+class TokenProvider {
+  generateRefreshToken(userId): refreshToken
+  generateAccessToken(userId): accessToken
+}
+
+' Relationships
+skills }--|| games : "has"
+users }--|| records : "has"
+games }--|| records : "has"
+users --o{ rating : "has"
+skills --o{ rating : "has"
+user_stats }o-- users : "belongs to"
+tokens }o-- users : "belongs to"
+users ..> TokenProvider : "uses"
+
+@enduml

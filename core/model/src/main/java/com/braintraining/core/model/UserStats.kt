@@ -7,8 +7,8 @@ data class UserStats(
     val currentStreak: Int,
     val longestStreak: Int,
     val lastPlayedDate: LocalDate?,
-    val firstElo: Int,
-    val bestElo: Int,
-    val overallElo: Int,
+    val firstRating: Int,
+    val bestRating: Int,
+    val overallRating: Int,
     val globalRank: Int?,
 )

@@ -2,10 +2,10 @@ package com.braintraining.core.model
 
 import java.time.Instant
 
-data class Elo(
-    val eloId: String,
+data class Rating(
+    val ratingId: String,
     val userId: String,
     val skillId: String,
-    val currentElo: Int,
+    val currentRating: Int,
     val createdAt: Instant,
 )

@@ -1,0 +1,44 @@
+@startuml createRecord
+title Sequence: Create Record
+
+participant "caller" as caller
+participant "record :records" as records
+participant "rating :ratings" as ratings
+participant ":user_stats" as user_stats
+
+caller -> records : createRecord(record)
+activate records
+
+records -> ratings : updateCurrentRating(record)
+activate ratings
+
+ratings -> ratings : calculateRating(record)
+activate ratings
+ratings --> ratings : current_rating
+deactivate ratings
+
+ratings -> user_stats : updateStats(current_rating)
+activate user_stats
+
+user_stats -> user_stats : updateBestRating(rating)
+activate user_stats
+deactivate user_stats
+
+user_stats -> user_stats : updateOverallRating(rating)
+activate user_stats
+deactivate user_stats
+
+user_stats -> user_stats : calculateGlobalRank(rating)
+activate user_stats
+deactivate user_stats
+
+user_stats --> ratings : void
+deactivate user_stats
+
+ratings --> records : void
+deactivate ratings
+
+records --> caller : void
+deactivate records
+
+@enduml

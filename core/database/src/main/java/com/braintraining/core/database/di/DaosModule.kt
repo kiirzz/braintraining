@@ -1,7 +1,7 @@
 package com.braintraining.core.database.di
 
 import com.braintraining.core.database.BraintrainingDatabase
-import com.braintraining.core.database.dao.EloDao
+import com.braintraining.core.database.dao.RatingDao
 import com.braintraining.core.database.dao.GameDao
 import com.braintraining.core.database.dao.RecordDao
 import com.braintraining.core.database.dao.SkillDao
@@ -41,7 +41,7 @@ internal object DaosModule {
     ): UserStatsDao = database.userStatsDao()
 
     @Provides
-    fun provideEloDao(
+    fun provideRatingDao(
         database: BraintrainingDatabase,
-    ): EloDao = database.eloDao()
+    ): RatingDao = database.ratingDao()
 }
