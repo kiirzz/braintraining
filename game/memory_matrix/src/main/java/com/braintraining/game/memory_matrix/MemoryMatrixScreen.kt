@@ -46,15 +46,15 @@ private enum class TileVisual { Idle, Highlighted, Selected, Correct, Wrong }
 fun MemoryMatrixScreen(
     onGameComplete: (score: Int, durationMs: Long) -> Unit,
     onExit: () -> Unit,
-    viewModel: MemoryMatrixViewModel = viewModel(factory = remember {
+) {
+    val viewModel: MemoryMatrixViewModel = viewModel(factory = remember {
         object : androidx.lifecycle.ViewModelProvider.Factory {
             override fun <T : androidx.lifecycle.ViewModel> create(modelClass: Class<T>): T {
                 @Suppress("UNCHECKED_CAST")
                 return MemoryMatrixViewModel() as T
             }
         }
-    }),
-) {
+    })
     val uiState by viewModel.uiState.collectAsState()
     val currentOnGameComplete by rememberUpdatedState(onGameComplete)
     val gameOver = uiState as? MemoryMatrixUiState.GameOver

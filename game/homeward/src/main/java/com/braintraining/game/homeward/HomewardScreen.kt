@@ -46,14 +46,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 fun HomewardScreen(
     onGameComplete: (score: Int, durationMs: Long) -> Unit,
     onExit: () -> Unit,
-    viewModel: HomewardViewModel = viewModel(factory = remember {
+) {
+    val viewModel: HomewardViewModel = viewModel(factory = remember {
         object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T =
                 HomewardViewModel() as T
         }
-    }),
-) {
+    })
     val uiState by viewModel.uiState.collectAsState()
 
     Box(

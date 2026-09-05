@@ -53,14 +53,14 @@ import kotlin.math.sin
 fun SpeedMatchScreen(
     onGameComplete: (score: Int, durationMs: Long) -> Unit,
     onExit: () -> Unit,
-    viewModel: SpeedMatchViewModel = viewModel(factory = remember {
+) {
+    val viewModel: SpeedMatchViewModel = viewModel(factory = remember {
         object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T =
                 SpeedMatchViewModel() as T
         }
-    }),
-) {
+    })
     val uiState by viewModel.uiState.collectAsState()
 
     Box(

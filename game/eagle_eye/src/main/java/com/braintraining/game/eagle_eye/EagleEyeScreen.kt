@@ -59,14 +59,14 @@ import kotlinx.coroutines.delay
 fun EagleEyeScreen(
     onGameComplete: (score: Int, durationMs: Long) -> Unit,
     onExit: () -> Unit,
-    viewModel: EagleEyeViewModel = viewModel(factory = remember {
+) {
+    val viewModel: EagleEyeViewModel = viewModel(factory = remember {
         object : androidx.lifecycle.ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : androidx.lifecycle.ViewModel> create(modelClass: Class<T>): T =
                 EagleEyeViewModel() as T
         }
-    }),
-) {
+    })
     val state by viewModel.uiState.collectAsState()
 
     when (val s = state) {

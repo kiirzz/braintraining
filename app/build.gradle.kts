@@ -80,6 +80,14 @@ dependencies {
     implementation(project(":core:systemdesign"))
     implementation(project(":core:firebase"))
 
+    implementation(project(":game:speed_match"))
+    implementation(project(":game:memory_matrix"))
+    implementation(project(":game:eagle_eye"))
+    implementation(project(":game:lost_in_migration"))
+    implementation(project(":game:homeward"))
+    implementation(project(":game:matrix_deduction"))
+    implementation(project(":game:compute_challenge"))
+
     // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

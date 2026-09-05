@@ -31,7 +31,7 @@ import com.braintraining.core.database.model.UserStatsEntity
         TrainingSessionEntity::class,
         TrainingSessionGameEntity::class,
     ],
-    version = 2,
+    version = 3,
     autoMigrations = [],
     exportSchema = true,
 )

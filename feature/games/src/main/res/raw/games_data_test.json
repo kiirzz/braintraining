@@ -6,15 +6,9 @@
     },
     "games": [
       {
-        "id": 1,
-        "name": "game1",
-        "description": "description1",
-        "skillId": 1
-      },
-      {
-        "id": 2,
-        "name": "game2",
-        "description": "description2",
+        "id": "speed_match",
+        "name": "Speed Match",
+        "description": "Decide whether the current symbol matches the previous one. Train processing speed under time pressure.",
         "skillId": 1
       }
     ]
@@ -26,9 +20,9 @@
     },
     "games": [
       {
-        "id": 3,
-        "name": "game3",
-        "description": "description3",
+        "id": "memory_matrix",
+        "name": "Memory Matrix",
+        "description": "Memorize the highlighted tiles, then tap them back in the same pattern.",
         "skillId": 2
       }
     ]
@@ -38,7 +32,20 @@
       "id": 3,
       "name": "Attention"
     },
-    "games": []
+    "games": [
+      {
+        "id": "eagle_eye",
+        "name": "Eagle Eye",
+        "description": "Find the one shape that does not belong before time runs out.",
+        "skillId": 3
+      },
+      {
+        "id": "lost_in_migration",
+        "name": "Lost in Migration",
+        "description": "Spot the bird flying in a different direction from the flock.",
+        "skillId": 3
+      }
+    ]
   },
   {
     "skill": {
@@ -47,15 +54,9 @@
     },
     "games": [
       {
-        "id": 4,
-        "name": "game4",
-        "description": "description4",
-        "skillId": 4
-      },
-      {
-        "id": 5,
-        "name": "game5",
-        "description": "description5",
+        "id": "homeward",
+        "name": "Homeward",
+        "description": "Trace a path home through the grid while planning each move carefully.",
         "skillId": 4
       }
     ]
@@ -67,9 +68,9 @@
     },
     "games": [
       {
-        "id": 6,
-        "name": "game6",
-        "description": "description6",
+        "id": "matrix_deduction",
+        "name": "Matrix Deduction",
+        "description": "Study the pattern and choose the missing tile that completes the matrix.",
         "skillId": 5
       }
     ]
@@ -79,6 +80,13 @@
       "id": 6,
       "name": "Math"
     },
-    "games": []
+    "games": [
+      {
+        "id": "compute_challenge",
+        "name": "Compute Challenge",
+        "description": "Tap falling equations that are true and let the false ones pass.",
+        "skillId": 6
+      }
+    ]
   }
 ]

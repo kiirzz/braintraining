@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "622603077548",
+    "project_id": "braintraining-47f0c",
+    "storage_bucket": "braintraining-47f0c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622603077548:android:87cf2eccac383cb6685c09",
+        "android_client_info": {
+          "package_name": "com.braintraining"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgJ4x7v_7lzp8S-Vb7bNssqa73WnZS3h0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

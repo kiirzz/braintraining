@@ -30,7 +30,7 @@ fun NavGraph(
         composable(Dest.Home) {
             setShowTopBar(true)
             setShowBottomBar(true)
-            HomeScreen()
+            HomeScreen(navController)
         }
         composable(Dest.Games) {
             setShowTopBar(true)
@@ -65,6 +65,23 @@ fun NavGraph(
                     navController = navController,
                     gameId = gameId,
                     skillId = skillId
+                )
+            }
+        }
+        composable(
+            Dest.PlayGameWithId,
+            arguments = listOf(
+                navArgument("gameId") { type = NavType.StringType },
+            )
+        ) { backStackEntry ->
+            setShowTopBar(false)
+            setShowBottomBar(false)
+
+            val gameId = backStackEntry.arguments?.getString("gameId")
+            if (gameId != null) {
+                PlayGameScreen(
+                    gameId = gameId,
+                    navController = navController,
                 )
             }
         }

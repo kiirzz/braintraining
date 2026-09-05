@@ -43,15 +43,15 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 fun ComputeChallengeScreen(
     onGameComplete: (score: Int, durationMs: Long) -> Unit,
     onExit: () -> Unit,
-    viewModel: ComputeChallengeViewModel = viewModel(factory = remember {
+) {
+    val viewModel: ComputeChallengeViewModel = viewModel(factory = remember {
         object : androidx.lifecycle.ViewModelProvider.Factory {
             override fun <T : androidx.lifecycle.ViewModel> create(modelClass: Class<T>): T {
                 @Suppress("UNCHECKED_CAST")
                 return ComputeChallengeViewModel() as T
             }
         }
-    }),
-) {
+    })
     val uiState by viewModel.uiState.collectAsState()
     val currentOnGameComplete by rememberUpdatedState(onGameComplete)
     val gameOver = uiState as? ComputeChallengeUiState.GameOver

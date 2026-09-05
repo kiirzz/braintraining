@@ -49,7 +49,9 @@ fun GameDetailScreen(
             .background(MaterialTheme.colorScheme.background)
             .fillMaxSize()
     ) {
-        if (game != null && skill != null) {
+        val currentGame = game
+        val currentSkill = skill
+        if (currentGame != null && currentSkill != null) {
             Column(
                 modifier = Modifier
                     .weight(1f)
@@ -86,14 +88,16 @@ fun GameDetailScreen(
                     modifier = Modifier
                         .padding(16.dp)
                 ) {
-                    Text(skill!!.name, style = MaterialTheme.typography.bodySmall)
-                    Text(game!!.name, style = MaterialTheme.typography.titleLarge)
-                    Text(game!!.description, style = MaterialTheme.typography.bodyMedium)
+                    Text(currentSkill.name, style = MaterialTheme.typography.bodySmall)
+                    Text(currentGame.name, style = MaterialTheme.typography.titleLarge)
+                    Text(currentGame.description, style = MaterialTheme.typography.bodyMedium)
                 }
             }
 
             Button(
-                onClick = {},
+                onClick = {
+                    navController.navigate("play/${currentGame.id}")
+                },
                 shape = CircleShape,
                 modifier = Modifier
                     .fillMaxWidth()

@@ -47,14 +47,14 @@ import kotlin.math.roundToInt
 fun LostInMigrationScreen(
     onGameComplete: (score: Int, durationMs: Long) -> Unit,
     onExit: () -> Unit,
-    viewModel: LostInMigrationViewModel = viewModel(factory = remember {
+) {
+    val viewModel: LostInMigrationViewModel = viewModel(factory = remember {
         object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T =
                 LostInMigrationViewModel() as T
         }
-    }),
-) {
+    })
     val uiState by viewModel.uiState.collectAsState()
 
     Box(
